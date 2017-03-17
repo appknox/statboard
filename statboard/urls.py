@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from statboard.core.views import github
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^github$', github),
 ]

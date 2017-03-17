@@ -1,3 +1,7 @@
 from django.shortcuts import render
+from statboard.core.models import Metric
 
-# Create your views here.
+
+def github(request):
+    metric = Metric.objects.get(name='GITHUB')
+    return render(request, 'github.html', {'metric': metric})
