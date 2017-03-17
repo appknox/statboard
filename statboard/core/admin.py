@@ -1,3 +1,4 @@
 from django.contrib import admin
+from statboard.core.models import Metric
 
-# Register your models here.
+admin.site.register(Metric)
