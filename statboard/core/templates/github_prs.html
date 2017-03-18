@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
-	<head>
+    <head>
         <meta charset="utf-8" />
-		<title>Github</title>
-	</head>
-	<body>
-        FOO
-	</body>
+        <title>Github</title>
+    </head>
+    <body>
+        {% for pr in pr_list %}
+            <h1>{{pr}}</h1>
+        {% endfor %}
+    </body>
 </html>
