@@ -12,10 +12,11 @@ Author: dhilipsiva <dhilipsiva@gmail.com>
 Date created: 2017-03-18
 """
 
-from statboard.core.config import huey
+from statboard.core.config import huey # NOQA
+from huey.contrib.djhuey import crontab, periodic_task
 
 
-@huey.task()
-def count_beans(num):
-    print("FOFAOFOAFO")
-    print('-- counted %s beans --' % num)
+@periodic_task(crontab(minute='*/1'))
+def fetch_metrics():
+    # Code to get data
+    print('Every five minutes this will be printed by the consumer')
