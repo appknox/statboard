@@ -14,10 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+from django.conf import settings
 from django.contrib import admin
-from statboard.core.views import github
+from statboard.core.views import github_prs
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^github$', github),
+    url(r'^%s$' % settings.VIEW_GITHUB_PRS, github_prs),
 ]
