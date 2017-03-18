@@ -39,7 +39,7 @@ def fetch_metrics():
     issues = r.get_issues()
     issue_list =[]
     for issue in issues:
-        issue_list.append(issue.title)
+        issue_list.append({'url': issue.html_url, 'title': issue.title})
     gh_issues = Metric.objects.get(name=settings.VIEW_GITHUB_ISSUES)
     issue_data = {'issue_list': issue_list}
     gh_issues.set_data(issue_data)
