@@ -18,9 +18,11 @@ from django.conf import settings
 from django.contrib import admin
 from statboard.core.views import github_prs
 from statboard.core.views import github_issues
+from statboard.core.views import twitter_widgets
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^%s$' % settings.VIEW_GITHUB_PRS, github_prs),
     url(r'^%s$' % settings.VIEW_GITHUB_ISSUES, github_issues),
+    url(r'^twitter_widgets$', twitter_widgets),
 ]

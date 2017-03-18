@@ -15,3 +15,7 @@ def github_issues(request):
     return render(
         request, '%s.html' % settings.VIEW_GITHUB_ISSUES,
         {'issue_list': metric.data_dict['issue_list']})
+
+def twitter_widgets(request):
+    return render(
+        request, 'twitter_widgets.html')        
