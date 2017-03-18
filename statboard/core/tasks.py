@@ -32,7 +32,16 @@ def fetch_metrics():
     pr_list = []
     for pr in prs:
         pr_list.append(pr.title)
-    m = Metric.objects.get(name=settings.VIEW_GITHUB_PRS)
-    data = {'pr_list': pr_list}
-    m.set_data(data)
+    gh_prs = Metric.objects.get(name=settings.VIEW_GITHUB_PRS)
+    pr_data = {'pr_list': pr_list}
+    gh_prs.set_data(pr_data)
+
+    issues = r.get_issues()
+    issue_list =[]
+    for issue in issues:
+        issue_list.append(issue.title)
+    gh_issues = Metric.objects.get(name=settings.VIEW_GITHUB_ISSUES)
+    issue_data = {'issue_list': issue_list}
+    gh_issues.set_data(issue_data)
+
     print("fetched github")

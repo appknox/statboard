@@ -9,3 +9,4 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         Metric.objects.get_or_create(name=settings.VIEW_GITHUB_PRS)
+        Metric.objects.get_or_create(name=settings.VIEW_GITHUB_ISSUES)

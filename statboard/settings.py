@@ -135,3 +135,5 @@ USE_TZ = False
 STATIC_URL = '/static/'
 
 VIEW_GITHUB_PRS = 'github_prs'
+
+VIEW_GITHUB_ISSUES = 'github_issues'

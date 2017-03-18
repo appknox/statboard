@@ -17,8 +17,10 @@ from django.conf.urls import url
 from django.conf import settings
 from django.contrib import admin
 from statboard.core.views import github_prs
+from statboard.core.views import github_issues
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^%s$' % settings.VIEW_GITHUB_PRS, github_prs),
+    url(r'^%s$' % settings.VIEW_GITHUB_ISSUES, github_issues),
 ]
