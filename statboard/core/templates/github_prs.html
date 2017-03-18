@@ -2,11 +2,12 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Github</title>
+        <title>Github Pull Requests</title>
     </head>
-    <body>
+    <body style="text-align:center">
+      <h1> Open Pull Requests </h1>
         {% for pr in pr_list %}
-            <h1>{{pr}}</h1>
+          <a href="{{pr.url}}" target="_blank"><h1>{{pr.title}}</h1></a>
         {% endfor %}
     </body>
 </html>

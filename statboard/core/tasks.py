@@ -31,7 +31,7 @@ def fetch_metrics():
     prs = r.get_pulls()
     pr_list = []
     for pr in prs:
-        pr_list.append(pr.title)
+        pr_list.append({'url': pr.html_url, 'title': pr.title})
     gh_prs = Metric.objects.get(name=settings.VIEW_GITHUB_PRS)
     pr_data = {'pr_list': pr_list}
     gh_prs.set_data(pr_data)
