@@ -51,7 +51,7 @@ If you need any sensitive keys, make sure you put them in environment variable a
 
 ### Rendering Your Metrics
 
-Create a `statboard/core/templates/<your_metric>.html` file which looks come thing like this:
+Create a `statboard/core/templates/<your_metric>.html` file which ALWAYS extends `base.html` and looks something like this:
 
 ```
 {% extends 'base.html' %}
