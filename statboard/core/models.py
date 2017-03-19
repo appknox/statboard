@@ -4,19 +4,21 @@ from django.db.models import Model, CharField, TextField
 
 class Metric(Model):
     name = CharField(max_length=50, unique=True)
-    data = TextField()
+    data_str = TextField()
 
     def __str__(self):
         return self.name
 
     @property
-    def data_dict(self):
+    def data(self):
         """
-        docstring for json_data
+        get `data_str` as py dict
         """
-        return loads(self.data)
+        return loads(self.data_str)
 
-    def set_data(self, data_dict):
-        """docstring for set_data"""
-        self.data = dumps(data_dict)
+    def set_data(self, data):
+        """
+        cast python dict `data` in str `data_str`
+        """
+        self.data_str = dumps(data)
         self.save()

@@ -7,7 +7,7 @@ Github Issues
 {% block content %}
 
 <h1> Open Issues </h1>
-{% for issue in issue_list %}
+{% for issue in metric.data.issue_list %}
 <a href="{{issue.url}}" target="_blank"><h1>{{issue.title}}</h1></a>
 {% endfor %}
 

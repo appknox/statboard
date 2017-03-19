@@ -7,7 +7,7 @@ Github Pull Requests
 {% block content %}
 
 <h1> Open Pull Requests </h1>
-{% for pr in pr_list %}
+{% for pr in metric.data.pr_list %}
 <a href="{{pr.url}}" target="_blank"><h1>{{pr.title}}</h1></a>
 {% endfor %}
 
