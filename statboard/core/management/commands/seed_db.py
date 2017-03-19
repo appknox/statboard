@@ -8,5 +8,7 @@ class Command(BaseCommand):
     help = "Seed the database with initial value"
 
     def handle(self, *args, **options):
-        Metric.objects.get_or_create(name=settings.VIEW_GITHUB_PRS)
-        Metric.objects.get_or_create(name=settings.VIEW_GITHUB_ISSUES)
+        for metric_name in settings.METRICS:
+            metric, _ = Metric.objects.get_or_create(name=metric_name)
+            metric.set_data({})
+            print("Created: %s" % metric)

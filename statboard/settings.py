@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+from copy import copy
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -134,6 +135,16 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 
-VIEW_GITHUB_PRS = 'github_prs'
+METRIC_GITHUB_PRS = 'github_prs'
+METRIC_GITHUB_ISSUES = 'github_issues'
+METRIC_TWITTER_WIDGETS = 'twitter_widgets'
 
-VIEW_GITHUB_ISSUES = 'github_issues'
+
+METRICS = []
+
+for key, value in copy(locals()).items():
+    if key.startswith("METRIC_"):
+        METRICS.append(value)
+
+NEXT_METRIC_TIMEOUT_SEC = 10  # Timeout in seconds
+NEXT_METRIC_TIMEOUT_MS = 1000 * NEXT_METRIC_TIMEOUT_SEC  # Don't change this

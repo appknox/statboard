@@ -1,21 +1,30 @@
 from django.conf import settings
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from statboard.core.models import Metric
 
 
-def github_prs(request):
-    metric = Metric.objects.get(name=settings.VIEW_GITHUB_PRS)
-    return render(
-        request, '%s.html' % settings.VIEW_GITHUB_PRS,
-        {'pr_list': metric.data_dict['pr_list']})
+def index(request):
+    """
+    docstring for index
+    """
+    last_url = request.GET.get('last_url')
+    if last_url not in settings.METRICS:
+        last_url = settings.METRICS[-1]
+    if last_url == settings.METRICS[-1]:
+        next_url = settings.METRICS[0]
+    else:
+        idx = settings.METRICS.index(last_url)
+        next_url = settings.METRICS[idx + 1]
+    return redirect(next_url)
 
-def github_issues(request):
-    metric = Metric.objects.get(name=settings.VIEW_GITHUB_ISSUES)
-    return render(
-        request, '%s.html' % settings.VIEW_GITHUB_ISSUES,
-        {'issue_list': metric.data_dict['issue_list']})
 
-def twitter_widgets(request):
+def metric_view(request):
+    """
+    docstring for metric_view
+    """
+    metric_name = request.resolver_match.url_name
+    metric = Metric.objects.get(name=metric_name)
     return render(
-        request, 'twitter_widgets.html')        
+        request, '%s.html' % metric_name,
+        {'metric': metric, 'timeout': settings.NEXT_METRIC_TIMEOUT_MS})

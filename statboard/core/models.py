@@ -3,7 +3,7 @@ from django.db.models import Model, CharField, TextField
 
 
 class Metric(Model):
-    name = CharField(max_length=50)
+    name = CharField(max_length=50, unique=True)
     data = TextField()
 
     def __str__(self):

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>
+            {% block title %}
+            {% endblock %}
+        </title>
+        {% block header %}
+        {% endblock %}
+    </head>
+    <body>
+        {% block content %}
+        {% endblock %}
+        <script charset="utf-8">
+            setTimeout(function () {
+                var indexUrl = "{% url 'index' %}?last_url={{metric.name}}";
+                location = indexUrl;
+            }, {{timeout}});
+        </script>
+        {% block footer %}
+        {% endblock %}
+    </body>
+</html>

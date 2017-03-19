@@ -1,13 +1,15 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Github Issues</title>
-    </head>
-    <body style="text-align:center">
-      <h1> Open Issues </h1>
-        {% for issue in issue_list %}
-          <a href="{{issue.url}}" target="_blank"><h1>{{issue.title}}</h1></a>
-        {% endfor %}
-    </body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}
+Github Issues
+{% endblock %}
+
+{% block content %}
+
+<h1> Open Issues </h1>
+{% for issue in issue_list %}
+<a href="{{issue.url}}" target="_blank"><h1>{{issue.title}}</h1></a>
+{% endfor %}
+
+
+{% endblock %}
